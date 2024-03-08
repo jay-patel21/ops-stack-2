@@ -1,12 +1,12 @@
 pipeline {
-    agent { label 'node-agent'}
+    agent none
     stages {
         stage('Test') {
             agent {
-                dockerfile true
+               label 'docker-agent'
+               dockerfile true
             }
             steps {
-                sh 'ip add'
                 sh 'whoami'
                 sh 'ls'
                 sh 'node --version'
