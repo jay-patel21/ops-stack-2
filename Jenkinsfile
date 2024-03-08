@@ -1,14 +1,9 @@
 pipeline {
     agent any
     stages {
-            steps {
-                sh 'whoami'
-                sh 'docker ps'
-                sh 'node --version'
-                sh 'svn --version'
-            }
         stage('Test') {
             agent {
+                sh 'ls .ssh' 
                 docker { image 'node:20.11.1' }
             }
             steps {
