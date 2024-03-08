@@ -1,7 +1,10 @@
 pipeline {
-    agent { docker { image 'node:20.11.1' } label 'node-agent'  }
+    agent any
     stages {
         stage('Test') {
+            agent {
+                docker { image 'node:20.11.1' }
+            }
             steps {
                 sh 'whoami'
                 sh 'docker ps'
