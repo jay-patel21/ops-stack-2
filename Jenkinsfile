@@ -4,6 +4,7 @@ pipeline {
         stage('Test') {
             agent {
                 docker { image 'node:20.11.1' }
+                label { label 'node-agent'}
             }
             steps {
                 sh 'ip add'
