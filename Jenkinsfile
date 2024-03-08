@@ -3,6 +3,10 @@ pipeline {
     stages {
         stage('Test') {
             agent {
+                steps {
+                    sh 'whoami'
+                    sh 'cd .ssh && ls'
+                }
                 docker { image 'node:20.11.1' }
             }
             steps {
