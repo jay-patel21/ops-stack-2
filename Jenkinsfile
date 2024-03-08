@@ -7,7 +7,7 @@ pipeline {
             // }
             steps {
                 sh 'whoami'
-                sh 'cd .ssh && ls'
+                sh 'ls'
                 sh 'node --version'
                 sh 'svn --version'
             }
