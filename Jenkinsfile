@@ -1,12 +1,8 @@
 pipeline {
-    agent any
+    agent 'node-agent'
     stages {
         stage('Test') {
-            steps {
-                sh 'ls .ssh'   
-            }
             agent {
-               
                 docker { image 'node:20.11.1' }
             }
             steps {
