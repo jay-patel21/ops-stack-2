@@ -1,9 +1,8 @@
 pipeline {
-    agent none
+    agent {label 'docker-agent'}
     stages {
         stage('Test') {
             agent {
-               label 'docker-agent'
                dockerfile true
             }
             steps {
