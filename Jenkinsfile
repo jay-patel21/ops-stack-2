@@ -2,9 +2,9 @@ pipeline {
     agent { label 'node-agent'}
     stages {
         stage('Test') {
-            // agent {
-            //     docker { image 'node:20.11.1' }
-            // }
+            agent {
+                docker { image 'node:20.11.1' }
+            }
             steps {
                 sh 'ip add'
                 sh 'whoami'
