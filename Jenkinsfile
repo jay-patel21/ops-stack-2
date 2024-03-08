@@ -4,6 +4,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'whoami'
+                sh 'docker ps'
                 sh 'node --version'
                 sh 'svn --version'
             }
