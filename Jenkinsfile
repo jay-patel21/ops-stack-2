@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
+                sh 'whoami'
                 sh 'docker images'
                 sh 'node --version'
                 sh 'svn --version'
