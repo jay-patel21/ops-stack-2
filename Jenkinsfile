@@ -9,10 +9,7 @@ pipeline {
                
             }
             steps {
-                sh 'whoami'
-                sh 'ls'
                 sh 'node --version'
-                sh 'svn --version'
             }
         }
     }
