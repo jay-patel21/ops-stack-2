@@ -1,9 +1,12 @@
 pipeline {
-    agent {label 'docker-agent'}
+    agent none
     stages {
         stage('Test') {
             agent {
-               dockerfile true
+               dockerfile {
+                label 'docker-agent'
+               }
+               
             }
             steps {
                 sh 'whoami'
