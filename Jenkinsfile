@@ -1,11 +1,12 @@
 pipeline {
-    agent {
-     dockerfile {
-     label 'docker-agent'
-          }   
-        }
+    agent none
     stages {
         stage('Test') {
+            agent {
+               dockerfile {
+                label 'docker-agent'
+               }             
+            }
             steps {
                 sh 'node --version'
             }
