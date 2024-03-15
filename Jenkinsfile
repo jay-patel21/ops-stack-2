@@ -10,7 +10,7 @@ pipeline {
             steps {
                 script {
                     // Build Docker image
-                def build = docker.build("my-image")
+                def build = docker.build("my-image","-u root")
 
                     // Run tests inside the Docker image
                     build.inside {
