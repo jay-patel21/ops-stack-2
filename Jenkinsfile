@@ -10,9 +10,9 @@ pipeline {
             }
             steps {
                 sh 'node --version'
-                sh 'chown -R node:node /.npm'
+                sh 'npm --version'
                 sh 'ls'
-                sh 'npm install'
+                // sh 'npm install'
                 sh 'npm run test'
             }
         }
