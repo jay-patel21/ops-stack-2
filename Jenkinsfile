@@ -5,7 +5,6 @@ pipeline {
             agent {
                 dockerfile {
                     filename 'Dockerfile-P'
-                    image 'node:18-alpine'
                     label 'docker-agent'
                 }
             }
