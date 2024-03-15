@@ -10,10 +10,10 @@ pipeline {
             steps {
                 script {
                     // Build Docker image
-                    docker.build("my-image")
+                def build docker.build("my-image")
 
                     // Run tests inside the Docker image
-                    docker.image("node-server").inside {
+                    build.inside {
                         sh 'ls'
                     }
                 }
