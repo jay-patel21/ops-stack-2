@@ -1,34 +1,38 @@
 pipeline {
     agent {
-        label 'docker-agent' // Use a Docker agent
+        label 'docker-agent'
     }
     environment {
-        DOCKER_IMAGE = 'your-docker-registry/your-image-name' // Change to your Docker registry and image name
+        ECR_REPO_URL = '730335598283.dkr.ecr.us-east-1.amazonaws.com/node-service'
     }
     stages {
         stage('Build and Test') {
             steps {
                 script {
                     // Build Docker image
-                    docker.build("${DOCKER_IMAGE}", "-f ./dockerfiles/test .")
+                    docker.build("my-image", "-f ./dockerfiles/test .")
 
                     // Run tests inside the Docker image
-                    docker.image("${DOCKER_IMAGE}").inside {
+                    docker.image("my-image").inside {
                         sh 'npm install'
                         sh 'npm run test'
                     }
                 }
             }
         }
-        // stage('Push to Registry') {
-        //     steps {
-        //         script {
-        //             // Push Docker image to registry
-        //             docker.withRegistry('https://registry.example.com', 'docker-hub-credentials') {
-        //                 docker.image("${DOCKER_IMAGE}").push('latest') // You can tag it as needed
-        //             }
-        //         }
-        //     }
-        // }
+        stage('Push to ECR') {
+            steps {
+                script {
+                    // Authenticate with ECR
+                    docker.withRegistry('', 'ecr:us-east-1:aws-ecr-credentials') {
+                        // Tag the image for ECR
+                        docker.image("my-image").tag("${ECR_REPO_URL}:latest")
+
+                        // Push the image to ECR
+                        docker.image("${ECR_REPO_URL}:latest").push()
+                    }
+                }
+            }
+        }
     }
 }
