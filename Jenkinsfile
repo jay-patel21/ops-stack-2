@@ -10,12 +10,13 @@ pipeline {
                     // rather than on a new node entirely:
                     label 'docker-agent'
                 }
-    }
+            }    
+        }
             steps {
                 sh 'node --version'
                 sh 'npm run test'
             }
         }
     }
-}
+
  
