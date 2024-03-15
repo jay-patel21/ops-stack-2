@@ -15,8 +15,8 @@ pipeline {
                     // Run tests inside the Docker image
                     build.inside('-u root') {
                         sh 'pwd'
-                        rm -rf node_modules
-                        npm install
+                        sh 'rm -rf node_modules'
+                        sh 'npm install'
                         sh 'npm test'
                     }
                 }
