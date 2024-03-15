@@ -10,8 +10,9 @@ pipeline {
             }
             steps {
                 sh 'node --version'
-                sh 'sudo npm install'
-                sh 'sudo npm run test'
+                sh 'ls'
+                sh 'npm install'
+                sh 'npm run test'
             }
         }
     }
