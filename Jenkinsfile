@@ -15,6 +15,7 @@ pipeline {
                     // Run tests inside the Docker image
                     build.inside {
                         sh 'ls'
+                        sh 'npm install'
                         sh 'npm test'
                     }
                 }
