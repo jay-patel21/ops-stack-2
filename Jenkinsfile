@@ -20,19 +20,19 @@ pipeline {
                 }
             }
         }
-        // stage('Push to ECR') {
-        //     steps {
-        //         script {
-        //             // Authenticate with ECR
-        //             docker.withRegistry('', 'ecr:us-east-1:aws-ecr-credentials') {
-        //                 // Tag the image for ECR
-        //                 docker.image("my-image").tag("${ECR_REPO_URL}:latest")
+        stage('Push to ECR') {
+            steps {
+                script {
+                    // Authenticate with ECR
+                    docker.withRegistry('', 'ecr:us-east-1:aws-ecr-credentials') {
+                        // Tag the image for ECR
+                        docker.image("my-image").tag("${ECR_REPO_URL}:latest")
 
-        //                 // Push the image to ECR
-        //                 docker.image("${ECR_REPO_URL}:latest").push()
-        //             }
-        //         }
-        //     }
-        // }
+                        // Push the image to ECR
+                        docker.image("${ECR_REPO_URL}:latest").push()
+                    }
+                }
+            }
+        }
     }
 }
