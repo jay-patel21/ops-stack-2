@@ -11,6 +11,7 @@ pipeline {
             steps {
                 sh 'node --version'
                 sh 'ls'
+                sh 'rm -r node_modules'
                 sh 'npm install'
                 sh 'npm run test'
             }
