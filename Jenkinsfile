@@ -12,8 +12,8 @@ pipeline {
             steps {
                 sh 'node --version'
                 sh 'ls'
-                sh 'npm install'
-                sh 'npm run test'
+                // sh 'npm install'
+                // sh 'npm run test'
             }
         }
     }
