@@ -10,10 +10,10 @@ pipeline {
             steps {
                 script {
                     // Build Docker image
-                def build = docker.build("my-image","-u root")
+                def build = docker.build("my-image")
 
                     // Run tests inside the Docker image
-                    build.inside {
+                    build.inside('-u root') {
                         sh 'pwd'
                         sh 'npm install'
                         sh 'npm test'
