@@ -11,7 +11,7 @@ pipeline {
             steps {
                 sh 'node --version'
                 sh 'ls'
-                sh 'whoami'
+                sh 'su node'
                 sh 'rm -r node_modules'
                 sh 'npm install'
                 sh 'npm run test'
