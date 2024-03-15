@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('Test') {
             agent {
-                docker {
+                dockerfile {
+                    filename 'Dockerfile-P'
                     image 'node:18-alpine'
                     label 'docker-agent'
                 }
