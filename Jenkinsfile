@@ -3,15 +3,15 @@ pipeline {
     stages {
         stage('Test') {
             agent {
-                dockerfile {
-                    filename 'Dockerfile-P'
+                docker {
+                    image 'node:18-alpine'
                     label 'docker-agent'
+                    args  '-u root'
                 }
             }
             steps {
                 sh 'node --version'
                 sh 'ls'
-                sh 'rm -r node_modules'
                 sh 'npm install'
                 sh 'npm run test'
             }
