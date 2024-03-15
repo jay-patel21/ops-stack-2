@@ -10,29 +10,28 @@ pipeline {
             steps {
                 script {
                     // Build Docker image
-                    docker.build("my-image", "-f ./dockerfiles/test .")
+                    docker.build("my-image")
 
                     // Run tests inside the Docker image
-                    docker.image("my-image").inside {
-                        sh 'npm install'
-                        sh 'npm run test'
+                    docker.image("node-server").inside {
+                        sh 'ls'
                     }
                 }
             }
         }
-        stage('Push to ECR') {
-            steps {
-                script {
-                    // Authenticate with ECR
-                    docker.withRegistry('', 'ecr:us-east-1:aws-ecr-credentials') {
-                        // Tag the image for ECR
-                        docker.image("my-image").tag("${ECR_REPO_URL}:latest")
+        // stage('Push to ECR') {
+        //     steps {
+        //         script {
+        //             // Authenticate with ECR
+        //             docker.withRegistry('', 'ecr:us-east-1:aws-ecr-credentials') {
+        //                 // Tag the image for ECR
+        //                 docker.image("my-image").tag("${ECR_REPO_URL}:latest")
 
-                        // Push the image to ECR
-                        docker.image("${ECR_REPO_URL}:latest").push()
-                    }
-                }
-            }
-        }
+        //                 // Push the image to ECR
+        //                 docker.image("${ECR_REPO_URL}:latest").push()
+        //             }
+        //         }
+        //     }
+        // }
     }
 }
