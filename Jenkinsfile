@@ -11,6 +11,7 @@ pipeline {
         stage('Build and Test') {
             steps {
                 script {
+                    // Define build as a global variable
                     def build = docker.build("my-image")
 
                     // Run tests inside the Docker image
@@ -26,6 +27,8 @@ pipeline {
         stage('Push to ECR') {
             steps {
                 script {
+                    def build = docker.build("my-image") // You need to redefine the build here
+
                     // Authenticate with ECR
                     docker.withRegistry('https://730335598283.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:awsecr') {
                         build.push()
