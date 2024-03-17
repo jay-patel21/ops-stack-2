@@ -27,10 +27,11 @@ pipeline {
         stage('Push to ECR') {
             steps {
                 script {
-                    def build = docker.build("node-service") // You need to redefine the build here
-
+                  
                     // Authenticate with ECR
                     docker.withRegistry('https://730335598283.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:awsecr') {
+                          def build = docker.build("node-service") // You need to redefine the build here
+
                         build.push()
                     }
                 }
