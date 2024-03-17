@@ -10,7 +10,7 @@ pipeline {
         stage('Build and Test') {
             steps {
                 script {
-                def build = docker.build("my-image")
+                    def build = docker.build("my-image")
 
                     // Run tests inside the Docker image
                     build.inside('-u root') {
@@ -26,7 +26,7 @@ pipeline {
             steps {
                 script {
                     // Authenticate with ECR
-                    docker.withRegistry('', '${AWS_ECR_CRED}') {
+                    docker.withRegistry('https://730335598283.dkr.ecr.us-east-1.amazonaws.com', '${AWS_ECR_CRED}') {
                         // Tag the image for ECR
                         docker.image("my-image").tag("${ECR_REPO_URL}:latest")
 
