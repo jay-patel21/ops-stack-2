@@ -8,7 +8,11 @@ pipeline {
     stages {
         stage('Build and Test') {
             steps {
+                  agent {
+        label 'docker-agent'
+    }
                 script {
+                
                     // Build Docker image
                 def build = docker.build("my-image")
 
