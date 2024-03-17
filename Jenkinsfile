@@ -38,7 +38,7 @@ pipeline {
         stage('Deploy image on EC2') {
             steps {
                 script {
-                    sshagent(credentials: ['docker-slave']) {
+                    sshagent(credentials: ['node-server']) {
                         sh 'ssh -o StrictHostKeyChecking=no -l jenkins 3.95.201.216 uname -a'
                     }
                 }
