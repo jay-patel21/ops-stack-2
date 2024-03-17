@@ -11,6 +11,7 @@ pipeline {
         stage('Build and Test') {
             steps {
                 script {
+                    sh 'whoami'
                     // Define build as a global variable
                     def build = docker.build("node-service")
 
