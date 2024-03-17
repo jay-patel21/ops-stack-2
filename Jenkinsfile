@@ -12,7 +12,7 @@ pipeline {
         label 'docker-agent'
     }
                 script {
-                
+                whoami
                     // Build Docker image
                 def build = docker.build("my-image")
 
