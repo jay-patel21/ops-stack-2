@@ -26,7 +26,7 @@ pipeline {
             steps {
                 script {
                     // Authenticate with ECR
-                    docker.withRegistry('', 'awsecr') {
+                    docker.withRegistry('', '${AWS_ECR_CRED}') {
                         // Tag the image for ECR
                         docker.image("my-image").tag("${ECR_REPO_URL}:latest")
 
