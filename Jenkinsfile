@@ -4,6 +4,7 @@ pipeline {
     }
     environment {
         ECR_REPO_URL = '730335598283.dkr.ecr.us-east-1.amazonaws.com/node-service'
+        AWS_ECR_CRED = crdentials('awsecr') 
     }
     stages {
         stage('Build and Test') {
