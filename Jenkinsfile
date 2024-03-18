@@ -37,7 +37,7 @@ pipeline {
         stage('Deploy image on EC2') {
             steps {
                 script {
-                    sshagent(credentials: ['node-server']) {
+                    sshagent(credentials: ['node-service']) {
                        sh '''
                         ssh -v -o StrictHostKeyChecking=no -l ubuntu 54.234.53.183 \
         '               uname -a && \
