@@ -38,7 +38,7 @@ pipeline {
             steps {
                 script {
                     sshagent(credentials: ['node-server']) {
-                        sh 'ssh -o StrictHostKeyChecking=no -l ubuntu 3.91.228.249 uname -a'
+                        sh 'ssh -v -o StrictHostKeyChecking=no -l ubuntu 3.91.228.249 uname -a'
                         sh "echo hi"
                     }
                 }
