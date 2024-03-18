@@ -38,23 +38,23 @@ pipeline {
             steps {
                 script {
                     sshagent(credentials: ['node-server']) {
-                     sh """
+                        sh """
                             ssh -v -o StrictHostKeyChecking=no -l ubuntu 3.91.228.249 '
                                 uname -a &&
                                 echo logged into the node-server &&
                                 ls &&
-                                if [ $(docker ps -f name=blue -q) ]; then
-                                    ENV=\"green\"
-                                    OLD=\"blue\"
+                                if [ \$(docker ps -f name=blue -q) ]; then
+                                    ENV="green"
+                                    OLD="blue"
                                 else
-                                    ENV=\"blue\"
-                                    OLD=\"green\"
+                                    ENV="blue"
+                                    OLD="green"
                                 fi &&
-                                echo \"Starting $ENV container\" &&
+                                echo \"Starting \$ENV container\" &&
                                 docker-compose --project-name=\$ENV up -d &&
                                 echo \"Waiting...\" &&
                                 sleep 5s &&
-                                echo \"Stopping $OLD container\" &&
+                                echo \"Stopping \$OLD container\" &&
                                 docker-compose --project-name=\$OLD stop
                             '
                         """
