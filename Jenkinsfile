@@ -40,6 +40,7 @@ pipeline {
                     sshagent(credentials: ['node-server']) {
                         sh 'ssh -v -o StrictHostKeyChecking=no -l ubuntu 3.91.228.249 uname -a'
                         sh "echo logged into the node-server"
+                        sh "ls"
                         sh '''
                             if [ $(docker ps -f name=blue -q) ]; then
                                 ENV="green"
