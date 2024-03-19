@@ -41,6 +41,7 @@ pipeline {
                        sh '''
                         ssh -v -o StrictHostKeyChecking=no -l ubuntu 54.92.173.127 \
                         'uname -a && \
+                        whoami && \
                         echo logged into the node-server && \
                         ls && \
                         ./blue-green-deploy.sh'
