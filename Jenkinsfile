@@ -40,10 +40,10 @@ pipeline {
                     sshagent(credentials: ['node-service']) {
                        sh '''
                         ssh -v -o StrictHostKeyChecking=no -l ubuntu 54.92.173.127 \
-        '               uname -a && \
+                        'uname -a && \
                         echo logged into the node-server && \
                         ls && \
-                        ./blue-green-deploy.sh
+                        ./blue-green-deploy.sh'
                         '''
                     }
                 }
