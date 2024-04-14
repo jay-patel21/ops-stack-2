@@ -8,11 +8,6 @@
     "start": "node index.js",
     "lint": "prettier --check ."
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "prettier --write . && git add -A ."
-    }
-  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
