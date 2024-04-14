@@ -3,7 +3,7 @@ const server = require('./index');
 
 describe('Test the root path', () => {
   test('It should respond to GET method', async () => {
-    const response = await request(server).get('/');
+    const response = await request(server).get('/test');
     expect(response.statusCode).toBe(200);
   });
 });
