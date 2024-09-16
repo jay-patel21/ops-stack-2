@@ -1,8 +1,5 @@
 # Node.js Sample App
 
-## Overview
-
-Welcome to the Node.js Sample App repository! This project is a sample application built using Node.js, TypeScript, PostgreSQL, and TypeORM. It demonstrates the core setup and functionality of a Node.js application.
 
 ## Relationship with Terraform Repository
 
